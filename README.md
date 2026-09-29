@@ -484,168 +484,155 @@ Las fuentes deben ampliarse a medida que se desarrollen las siguientes capas.
 Las fuentes técnicas sobre elaboración de queso se utilizarán para establecer procesos, materias primas y parámetros cuando la información específica de Alpina no esté disponible públicamente.
 
 ---
-# Capa 3 — Flujo general
-
-La línea de quesos se modela como un **flujo común con rutas diferenciadas según el producto**. La secuencia general permite identificar las principales etapas de transformación, almacenamiento y despacho, mientras que los parámetros específicos de cada operación se desarrollarán en la Capa 4.
-
-## Flujo general de la línea
+ ## Flujo general de la línea
 
 ```mermaid
-flowchart LR
-    A[Materias primas] --> B[Recepción y control]
-    B --> C[Almacenamiento MP]
-    C --> D[Preparación de la leche]
-    D --> E[Tratamiento térmico]
-    E --> F[Cultivo / coagulación]
-    F --> G[Formación de cuajada]
-    G --> H[Corte / agitación]
-    H --> I[Desuerado]
-    I --> J[Procesamiento específico]
-    J --> K[Enfriamiento]
-    K --> L[Empaque]
-    L --> M[Almacenamiento PT]
-    M --> N[Despacho]
+flowchart TD
+    A[Materias primas]
+    B[Recepción y control]
+    C[Almacenamiento de materias primas]
+    D[Preparación de la leche]
+    E[Tratamiento térmico]
+    F[Cultivo / coagulación]
+    G[Formación de cuajada]
+    H[Corte / agitación]
+    I[Desuerado]
+    J[Procesamiento específico]
+    K[Enfriamiento]
+    L[Empaque]
+    M[Almacenamiento de producto terminado]
+    N[Despacho]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+    J --> K
+    K --> L
+    L --> M
+    M --> N
 ```
 
 ## Ruta — Queso Campesino
 
 ```mermaid
-flowchart LR
-    A[Recepción y control] --> B[Almacenamiento de leche]
-    B --> C[Preparación de la leche]
-    C --> D[Tratamiento térmico]
-    D --> E[Cultivo / coagulación]
-    E --> F[Corte de cuajada]
-    F --> G[Agitación]
-    G --> H[Desuerado]
-    H --> I[Tratamiento de cuajada]
-    I --> J[Salado]
-    J --> K[Moldeado]
-    K --> L[Prensado]
-    L --> M[Enfriamiento]
-    M --> N[Empaque]
-    N --> O[Almacenamiento PT]
-    O --> P[Despacho]
+flowchart TD
+    A[Recepción y control]
+    B[Almacenamiento de leche]
+    C[Preparación de la leche]
+    D[Tratamiento térmico]
+    E[Cultivo / coagulación]
+    F[Corte de cuajada]
+    G[Agitación]
+    H[Desuerado]
+    I[Tratamiento de cuajada]
+    J[Salado]
+    K[Moldeado]
+    L[Prensado]
+    M[Enfriamiento]
+    N[Empaque]
+    O[Almacenamiento de producto terminado]
+    P[Despacho]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+    J --> K
+    K --> L
+    L --> M
+    M --> N
+    N --> O
+    O --> P
 ```
 
 ## Ruta — Queso Mozzarella
 
 ```mermaid
-flowchart LR
-    A[Recepción y control] --> B[Almacenamiento de leche]
-    B --> C[Preparación de la leche]
-    C --> D[Tratamiento térmico]
-    D --> E[Cultivo / coagulación]
-    E --> F[Corte de cuajada]
-    F --> G[Agitación]
-    G --> H[Desuerado]
-    H --> I[Tratamiento de cuajada]
-    I --> J[Estirado / hilado]
-    J --> K[Moldeado]
-    K --> L[Enfriamiento]
-    L --> M[Empaque]
-    M --> N[Almacenamiento PT]
-    N --> O[Despacho]
+flowchart TD
+    A[Recepción y control]
+    B[Almacenamiento de leche]
+    C[Preparación de la leche]
+    D[Tratamiento térmico]
+    E[Cultivo / coagulación]
+    F[Corte de cuajada]
+    G[Agitación]
+    H[Desuerado]
+    I[Tratamiento de cuajada]
+    J[Estirado / hilado]
+    K[Moldeado]
+    L[Enfriamiento]
+    M[Empaque]
+    N[Almacenamiento de producto terminado]
+    O[Despacho]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+    J --> K
+    K --> L
+    L --> M
+    M --> N
+    N --> O
 ```
 
 ## Ruta — Queso Sopó
 
 ```mermaid
-flowchart LR
-    A[Recepción y control] --> B[Almacenamiento de leche]
-    B --> C[Preparación de la leche]
-    C --> D[Tratamiento térmico]
-    D --> E[Cultivo / coagulación]
-    E --> F[Corte de cuajada]
-    F --> G[Agitación]
-    G --> H[Desuerado]
-    H --> I[Tratamiento de cuajada]
-    I --> J[Moldeado]
-    J --> K[Prensado]
-    K --> L[Salado]
-    L --> M[Maduración]
-    M --> N[Enfriamiento / acondicionamiento]
-    N --> O[Empaque]
-    O --> P[Almacenamiento PT]
-    P --> Q[Despacho]
+flowchart TD
+    A[Recepción y control]
+    B[Almacenamiento de leche]
+    C[Preparación de la leche]
+    D[Tratamiento térmico]
+    E[Cultivo / coagulación]
+    F[Corte de cuajada]
+    G[Agitación]
+    H[Desuerado]
+    I[Tratamiento de cuajada]
+    J[Moldeado]
+    K[Prensado]
+    L[Salado]
+    M[Maduración]
+    N[Enfriamiento / acondicionamiento]
+    O[Empaque]
+    P[Almacenamiento de producto terminado]
+    Q[Despacho]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+    J --> K
+    K --> L
+    L --> M
+    M --> N
+    N --> O
+    O --> P
+    P --> Q
 ```
 
-## Entradas
-
-Las principales entradas identificadas para la línea son:
-
-| Tipo                   | Elementos                                                                           |
-| ---------------------- | ----------------------------------------------------------------------------------- |
-| Materias primas        | Leche, cultivos lácticos, cuajo/coagulante, sal y otros auxiliares                  |
-| Materiales de empaque  | Empaque primario, etiquetas y empaque secundario                                    |
-| Servicios industriales | Agua, energía eléctrica, refrigeración, vapor y aire comprimido, según la operación |
-
-## Salidas
-
-El proceso genera principalmente:
-
-* **Producto terminado:** queso correspondiente a cada referencia.
-* **Suero lácteo:** subproducto generado durante la separación de la cuajada.
-* **Residuos y desperdicios:** materiales o producto descartado durante el proceso.
-* **Información de producción:** datos asociados a materias primas, parámetros, equipos, calidad y trazabilidad.
-
-El suero será considerado posteriormente en el **balance de masa**, el análisis de aprovechamiento de subproductos y la evaluación de recursos de la planta.
-
-## Flujo de información
-
-El flujo físico se complementa con un flujo de información asociado a cada producción:
-
-```mermaid
-flowchart LR
-    A[Recepción de materias primas] --> B[Identificación de lotes]
-    B --> C[Selección de receta]
-    C --> D[Parámetros de proceso]
-    D --> E[Datos de producción]
-    E --> F[Resultados de calidad]
-    F --> G[Identificación del Batch]
-    G --> H[Producto terminado]
-    H --> I[Trazabilidad]
-```
-
-Esta estructura permitirá posteriormente relacionar el proceso físico con **sensores, actuadores, sistemas de supervisión y plataformas digitales** como SCADA, MES y ERP.
-
-## Puntos de almacenamiento identificados
-
-De manera preliminar se identifican los siguientes puntos:
-
-| Punto                                   | Función                                        | Estado   |
-| --------------------------------------- | ---------------------------------------------- | -------- |
-| Almacenamiento de leche                 | Conservación de materia prima                  | PROPOSED |
-| Almacenamiento de materiales de empaque | Disponibilidad de materiales                   | PROPOSED |
-| Almacenamiento intermedio               | Conservación temporal de productos/intermedios | PROPOSED |
-| Cámara de maduración                    | Maduración del Queso Sopó                      | PROPOSED |
-| Almacenamiento de producto terminado    | Conservación antes del despacho                | PROPOSED |
-
-Las capacidades, tiempos de permanencia e inventarios asociados se definirán posteriormente.
-
-## Consideraciones del flujo
-
-* La línea comparte una **secuencia base de transformación**, pero presenta operaciones específicas dependiendo de la referencia.
-* El **Queso Campesino** sigue una ruta orientada a la elaboración de un queso fresco.
-* El **Queso Mozzarella** incorpora la operación de **estirado/hilado**.
-* El **Queso Sopó** incorpora una etapa de **maduración**.
-* Las rutas anteriores corresponden al **modelo académico de la línea** y no representan necesariamente la secuencia interna exacta de producción de Alpina.
-* Los parámetros de operación, tiempos, equipos, capacidades y condiciones específicas se definirán y justificarán en las siguientes capas.
-
-## Estado de la capa
-
-| Elemento                 | Estado                           |
-| ------------------------ | -------------------------------- |
-| Flujo general            | 🟢 Definido                      |
-| Rutas por producto       | 🟢 Definidas                     |
-| Entradas                 | 🟢 Identificadas                 |
-| Salidas                  | 🟢 Identificadas                 |
-| Flujo de información     | 🟢 Definido conceptualmente      |
-| Puntos de almacenamiento | 🟡 Identificados preliminarmente |
-| Parámetros de proceso    | ⚪ Pendiente                      |
-| Equipos asociados        | ⚪ Capa 5                         |
-| Variables y medición     | ⚪ Capas 6–7                      |
-| Tiempos y capacidades    | ⚪ Capas 8–9                      |
+> **Nota:** Las secuencias corresponden al modelo académico propuesto para la línea de quesos. No representan necesariamente la secuencia interna exacta de producción de Alpina. Los parámetros y condiciones específicas serán validados y desarrollados en la Capa 4.
 
  
 
