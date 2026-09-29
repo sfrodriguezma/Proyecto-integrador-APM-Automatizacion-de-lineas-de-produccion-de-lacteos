@@ -484,7 +484,11 @@ Las fuentes deben ampliarse a medida que se desarrollen las siguientes capas.
 Las fuentes técnicas sobre elaboración de queso se utilizarán para establecer procesos, materias primas y parámetros cuando la información específica de Alpina no esté disponible públicamente.
 
 ---
- ## Flujo general de la línea
+# Capa 3 — Flujo general
+
+La línea de quesos se modela como un **flujo común con rutas diferenciadas según el producto**. La secuencia general permite identificar las principales etapas de transformación, almacenamiento y despacho. Los parámetros específicos de cada operación se desarrollarán posteriormente en la Capa 4.
+
+## Flujo general de la línea
 
 ```mermaid
 flowchart TD
@@ -632,7 +636,102 @@ flowchart TD
     P --> Q
 ```
 
-> **Nota:** Las secuencias corresponden al modelo académico propuesto para la línea de quesos. No representan necesariamente la secuencia interna exacta de producción de Alpina. Los parámetros y condiciones específicas serán validados y desarrollados en la Capa 4.
+## Entradas
+
+Las principales entradas identificadas para la línea son:
+
+| Tipo                   | Elementos                                                                           |
+| ---------------------- | ----------------------------------------------------------------------------------- |
+| Materias primas        | Leche, cultivos lácticos, cuajo/coagulante, sal y otros auxiliares                  |
+| Materiales de empaque  | Empaque primario, etiquetas y empaque secundario                                    |
+| Servicios industriales | Agua, energía eléctrica, refrigeración, vapor y aire comprimido, según la operación |
+
+## Salidas
+
+El proceso genera principalmente:
+
+* **Producto terminado:** queso correspondiente a cada referencia.
+* **Suero lácteo:** subproducto generado durante la separación de la cuajada.
+* **Residuos y desperdicios:** materiales o producto descartado durante el proceso.
+* **Información de producción:** datos asociados a materias primas, parámetros, equipos, calidad y trazabilidad.
+
+El suero será considerado posteriormente en el **balance de masa**, el análisis de aprovechamiento de subproductos y la evaluación de recursos de la planta.
+
+## Flujo de información
+
+El flujo físico se complementa con un flujo de información asociado a cada producción:
+
+```mermaid
+flowchart TD
+    A[Recepción de materias primas]
+    B[Identificación de lotes]
+    C[Selección de receta]
+    D[Parámetros de proceso]
+    E[Datos de producción]
+    F[Resultados de calidad]
+    G[Identificación del Batch]
+    H[Producto terminado]
+    I[Trazabilidad]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+```
+
+Esta estructura permitirá posteriormente relacionar el proceso físico con **sensores, actuadores y sistemas digitales** como SCADA, MES y ERP.
+
+## Puntos de almacenamiento identificados
+
+| Punto                                   | Función                                        | Estado   |
+| --------------------------------------- | ---------------------------------------------- | -------- |
+| Almacenamiento de leche                 | Conservación de materia prima                  | PROPOSED |
+| Almacenamiento de materiales de empaque | Disponibilidad de materiales                   | PROPOSED |
+| Almacenamiento intermedio               | Conservación temporal de productos/intermedios | PROPOSED |
+| Cámara de maduración                    | Maduración del Queso Sopó                      | PROPOSED |
+| Almacenamiento de producto terminado    | Conservación antes del despacho                | PROPOSED |
+
+Las capacidades, tiempos de permanencia e inventarios asociados se definirán posteriormente.
+
+## Consideraciones del flujo
+
+* La línea presenta una **secuencia base común**, con operaciones específicas dependiendo de la referencia.
+* El **Queso Campesino** incorpora salado, moldeado y prensado.
+* El **Queso Mozzarella** incorpora la operación de estirado o hilado.
+* El **Queso Sopó** incorpora una etapa de maduración.
+* El flujo físico y el flujo de información deben mantenerse asociados mediante la identificación de **lotes, recetas y batches**.
+* Las rutas representan el **modelo académico propuesto para la línea** y no necesariamente la secuencia interna exacta de producción de Alpina.
+* Los parámetros de operación, tiempos, equipos, capacidades y condiciones específicas se definirán en las capas siguientes.
+
+## Relación con las siguientes capas
+
+El flujo definido en esta capa será la base para desarrollar:
+
+**Flujo → Operaciones → Equipos → Variables → Sensores/actuadores → Tiempos → Capacidades → Recursos → Recetas → Batches y trazabilidad**
+
+Por tanto, cada operación identificada en los diagramas deberá poder relacionarse posteriormente con un identificador `Q-OP-XXX` y con los elementos correspondientes del modelo.
+
+## Estado de la capa
+
+| Elemento                 | Estado                           |
+| ------------------------ | -------------------------------- |
+| Flujo general            | 🟢 Definido                      |
+| Rutas por producto       | 🟢 Definidas                     |
+| Entradas                 | 🟢 Identificadas                 |
+| Salidas                  | 🟢 Identificadas                 |
+| Flujo de información     | 🟢 Definido conceptualmente      |
+| Puntos de almacenamiento | 🟡 Identificados preliminarmente |
+| Parámetros de proceso    | ⚪ Pendiente — Capa 4             |
+| Equipos asociados        | ⚪ Pendiente — Capa 5             |
+| Variables                | ⚪ Pendiente — Capa 6             |
+| Sensores y actuadores    | ⚪ Pendiente — Capa 7             |
+| Tiempos                  | ⚪ Pendiente — Capa 8             |
+| Capacidades              | ⚪ Pendiente — Capa 9             |
+ 
 
  
 
