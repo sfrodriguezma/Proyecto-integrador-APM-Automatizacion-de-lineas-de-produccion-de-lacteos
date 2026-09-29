@@ -1,7 +1,6 @@
-
 # Línea de Quesos — Modelo TDI
 
-## 1. Información general
+## Información general
 
 **Proyecto:** Transformación Digital Industrial (TDI)
 **Empresa de referencia:** Alpina Productos Alimenticios S.A.S.
@@ -13,30 +12,30 @@
 
 ---
 
-# 2. Estructura de modelamiento
+# Estructura de modelamiento
 
 La línea de quesos se desarrollará utilizando las 12 capas definidas en el estándar general del proyecto:
 
-| #  | Capa                   | Estado           |
-| -- | ---------------------- | ---------------- |
-| 1  | Contexto               | 🟢 En desarrollo |
-| 2  | Materias primas        | 🟢 En desarrollo |
-| 3  | Flujo general          | ⚪ Pendiente      |
-| 4  | Proceso detallado      | ⚪ Pendiente      |
-| 5  | Equipos                | ⚪ Pendiente      |
-| 6  | Variables              | ⚪ Pendiente      |
-| 7  | Sensores y actuadores  | ⚪ Pendiente      |
-| 8  | Tiempos                | ⚪ Pendiente      |
-| 9  | Capacidades            | ⚪ Pendiente      |
-| 10 | Recursos               | ⚪ Pendiente      |
-| 11 | Recetas                | ⚪ Pendiente      |
-| 12 | Batches y trazabilidad | ⚪ Pendiente      |
+| Capa | Descripción            | Estado           |
+| ---- | ---------------------- | ---------------- |
+| 1    | Contexto               | 🟢 En desarrollo |
+| 2    | Materias primas        | 🟢 En desarrollo |
+| 3    | Flujo general          | ⚪ Pendiente      |
+| 4    | Proceso detallado      | ⚪ Pendiente      |
+| 5    | Equipos                | ⚪ Pendiente      |
+| 6    | Variables              | ⚪ Pendiente      |
+| 7    | Sensores y actuadores  | ⚪ Pendiente      |
+| 8    | Tiempos                | ⚪ Pendiente      |
+| 9    | Capacidades            | ⚪ Pendiente      |
+| 10   | Recursos               | ⚪ Pendiente      |
+| 11   | Recetas                | ⚪ Pendiente      |
+| 12   | Batches y trazabilidad | ⚪ Pendiente      |
 
 ---
 
-# 3. Convenciones
+# Convenciones
 
-## 3.1 Origen de los datos
+## Origen de los datos
 
 Todos los datos deben identificarse mediante una de las siguientes etiquetas:
 
@@ -62,7 +61,7 @@ Producción diaria: 3.000 kg/día — CALCULATED
 
 ---
 
-# 4. Sistema de identificación
+## Sistema de identificación
 
 Todos los elementos de la línea de quesos utilizan el prefijo `Q`.
 
@@ -90,13 +89,13 @@ Los identificadores son únicos y no deben reutilizarse.
 
 ---
 
-# 5. Capa 1 — Contexto
+# Capa 1 — Contexto
 
-## 5.1 Empresa
+## Empresa
 
 **Alpina Productos Alimenticios S.A.S.**
 
-## 5.2 Planta de referencia
+## Planta de referencia
 
 **Sopó, Cundinamarca, Colombia**
 
@@ -104,9 +103,7 @@ La planta de Sopó se utiliza como referencia para construir el modelo académic
 
 La utilización de esta planta como referencia **no implica que los parámetros internos definidos posteriormente correspondan exactamente a la operación real actual de Alpina**.
 
----
-
-## 5.3 Línea de producción
+## Línea de producción
 
 **Línea:** Producción de quesos
 **Código:** `Q`
@@ -125,9 +122,7 @@ Almacenamiento
 Despacho
 ```
 
----
-
-## 5.4 Productos seleccionados
+## Productos seleccionados
 
 Se seleccionan tres referencias para representar diferentes características y rutas de procesamiento dentro de la línea:
 
@@ -185,11 +180,9 @@ Producto terminado
 
 > Estas diferencias representan la lógica de modelamiento del proyecto. La secuencia exacta de fabricación de cada referencia deberá validarse mediante fuentes técnicas y, cuando no exista información pública suficiente, mediante supuestos explícitos.
 
----
+## Alcance del modelo
 
-# 6. Alcance del modelo
-
-## 6.1 Dentro del alcance
+### Dentro del alcance
 
 El modelo comprende:
 
@@ -222,7 +215,7 @@ Almacenamiento
 Despacho
 ```
 
-## 6.2 Fuera del alcance inmediato
+### Fuera del alcance inmediato
 
 No se modelará inicialmente:
 
@@ -237,9 +230,9 @@ Estos elementos podrán aparecer posteriormente como contexto del proyecto, pero
 
 ---
 
-# 7. Capa 2 — Materias primas
+# Capa 2 — Materias primas
 
-## 7.1 Materias primas principales
+## Materias primas principales
 
 La materia prima principal de las tres referencias es la leche.
 
@@ -255,9 +248,7 @@ El proceso de elaboración de queso utiliza, dependiendo del producto, cultivos 
 
 > El cloruro de calcio se mantiene como posible insumo técnico, pero su utilización específica en cada referencia debe validarse antes de incorporarlo a las recetas.
 
----
-
-## 7.2 `Q-MP-001` — Leche de vaca
+## `Q-MP-001` — Leche de vaca
 
 La leche constituye la materia prima base de las tres referencias.
 
@@ -274,30 +265,13 @@ Características relevantes que posteriormente podrán convertirse en variables 
 * Carga microbiológica
 * Volumen recibido
 
-### Estado actual
-
-```text
-Q-MP-001
-Leche de vaca
-    ↓
-Materia prima principal
-    ↓
-Queso Campesino
-Queso Mozzarella
-Queso Sopó
-```
-
 Las cantidades por batch todavía no se han definido.
 
----
-
-## 7.3 `Q-MP-002` — Cultivos lácticos
+## `Q-MP-002` — Cultivos lácticos
 
 Los cultivos lácticos participan en la acidificación y en el desarrollo de características del queso.
 
-**Unidad provisional:**
-
-`kg` o `L`
+**Unidad provisional:** `kg` o `L`
 
 La cantidad exacta dependerá de:
 
@@ -310,15 +284,11 @@ La cantidad exacta dependerá de:
 
 Por lo tanto, la cantidad se definirá posteriormente en la capa de recetas.
 
----
-
-## 7.4 `Q-MP-003` — Cuajo / coagulante
+## `Q-MP-003` — Cuajo / coagulante
 
 El cuajo o coagulante produce la coagulación de la leche y permite formar la cuajada.
 
-**Unidad provisional:**
-
-`kg` o `L`
+**Unidad provisional:** `kg` o `L`
 
 La cantidad dependerá de:
 
@@ -330,9 +300,7 @@ La cantidad dependerá de:
 
 No se establece todavía un valor numérico.
 
----
-
-## 7.5 `Q-MP-004` — Sal / NaCl
+## `Q-MP-004` — Sal / NaCl
 
 La sal participa en:
 
@@ -342,15 +310,11 @@ La sal participa en:
 * Regulación de humedad
 * Características finales del queso
 
-**Unidad:**
-
-`kg`
+**Unidad:** `kg`
 
 La etapa exacta de incorporación dependerá del producto y será definida en el proceso detallado y en las recetas.
 
----
-
-## 7.6 `Q-MP-005` — Cloruro de calcio
+## `Q-MP-005` — Cloruro de calcio
 
 El cloruro de calcio se mantiene como un posible auxiliar de proceso para mejorar la formación y firmeza de la cuajada.
 
@@ -364,7 +328,7 @@ No se afirmará que Alpina utiliza este insumo en una referencia específica sin
 
 ---
 
-# 8. Materiales auxiliares y de empaque
+# Materiales auxiliares y de empaque
 
 Para efectos del modelo TDI, los materiales de empaque se registrarán separadamente de las materias primas.
 
@@ -378,7 +342,7 @@ Las especificaciones concretas de los materiales de empaque se definirán poster
 
 ---
 
-# 9. Relación Producto → Receta → Batch
+# Relación Producto → Receta → Batch
 
 La estructura fundamental del modelo será:
 
@@ -459,7 +423,7 @@ Esto permitirá construir la trazabilidad digital de la producción.
 
 ---
 
-# 10. Datos pendientes de definición
+# Datos pendientes de definición
 
 Los siguientes valores **no deben definirse arbitrariamente**. Se establecerán en las siguientes capas mediante referencias, supuestos y cálculos:
 
@@ -495,7 +459,7 @@ Capacidades
 
 ---
 
-# 11. Fuentes iniciales
+# Fuentes iniciales
 
 Las fuentes deben ampliarse a medida que se desarrollen las siguientes capas.
 
@@ -521,7 +485,7 @@ Las fuentes técnicas sobre elaboración de queso se utilizarán para establecer
 
 ---
 
-# 12. Estado del modelamiento
+# Estado del modelamiento
 
 ### Completado / definido
 
