@@ -485,35 +485,65 @@ Las fuentes técnicas sobre elaboración de queso se utilizarán para establecer
 
 ---
 
-# Estado del modelamiento
+# Capa 3 — Flujo general
 
-### Completado / definido
+La línea de quesos se modela como un flujo común con **rutas diferenciadas según el producto**. La secuencia exacta y los parámetros específicos se definirán y validarán en la Capa 4.
 
-* [x] Empresa de referencia
-* [x] Planta de referencia
-* [x] Línea de quesos
-* [x] Código de línea
-* [x] Tres referencias iniciales
-* [x] Alcance del modelo
-* [x] Convenciones de identificación
-* [x] Convenciones de origen de datos
-* [x] Materias primas principales
-* [x] Materiales auxiliares iniciales
-* [x] Estructura Producto → Receta → Batch
+## Flujo general
 
-### Pendiente
+**Materias primas → Recepción y control → Almacenamiento de MP → Preparación de la leche → Tratamiento térmico → Cultivo/coagulación → Formación de cuajada → Corte/agitación → Desuerado → Procesamiento específico → Enfriamiento → Empaque → Almacenamiento de producto terminado → Despacho**
 
-* [ ] Capa 3 — Flujo general
-* [ ] Capa 4 — Proceso detallado
-* [ ] Capa 5 — Equipos
-* [ ] Capa 6 — Variables
-* [ ] Capa 7 — Sensores y actuadores
-* [ ] Capa 8 — Tiempos
-* [ ] Capa 9 — Capacidades
-* [ ] Capa 10 — Recursos
-* [ ] Capa 11 — Recetas
-* [ ] Capa 12 — Batches y trazabilidad
-* [ ] Integración con Yogurt
-* [ ] Integración con UHT
-* [ ] Identificación de recursos compartidos
-* [ ] Modelo global de planta
+## Rutas por producto
+
+| Producto             | Ruta específica                                                            |
+| -------------------- | -------------------------------------------------------------------------- |
+| **Queso Campesino**  | Salado → Moldeado → Prensado → Enfriamiento                                |
+| **Queso Mozzarella** | Estirado/hilado → Moldeado → Enfriamiento                                  |
+| **Queso Sopó**       | Moldeado → Prensado → Salado → Maduración → Enfriamiento/acondicionamiento |
+
+> **Nota:** Las rutas anteriores corresponden al modelo académico de la línea y no representan necesariamente la secuencia interna exacta de producción de Alpina.
+
+## Entradas
+
+* Leche
+* Cultivos lácticos
+* Cuajo/coagulante
+* Sal
+* Otros auxiliares de proceso
+* Materiales de empaque
+
+## Salidas
+
+* Producto terminado
+* Suero lácteo
+* Residuos y desperdicios de proceso
+
+El **suero** se considera una salida relevante para el posterior balance de masa, análisis de aprovechamiento de subproductos y evaluación de recursos.
+
+## Flujo de información
+
+Además del flujo físico, cada producción debe generar información asociada al lote:
+
+**Recepción → Identificación de materias primas → Receta → Parámetros de proceso → Datos de producción → Resultados de calidad → Batch → Producto terminado → Trazabilidad**
+
+Esta estructura permitirá posteriormente integrar sensores, actuadores, SCADA/MES y ERP dentro de la arquitectura de transformación digital.
+
+## Puntos de almacenamiento identificados
+
+* Materias primas refrigeradas
+* Materiales de empaque
+* Productos intermedios
+* Producto en maduración
+* Producto terminado refrigerado
+
+Estos puntos serán detallados posteriormente para definir inventarios, capacidades y tiempos de almacenamiento.
+
+## Estado de la capa
+
+* 🟢 Flujo general definido
+* 🟢 Rutas diferenciadas por producto
+* 🟢 Entradas y salidas identificadas
+* 🟢 Flujo de información definido conceptualmente
+* 🟡 Puntos de almacenamiento preliminares
+* ⚪ Parámetros, tiempos, equipos y capacidades → **Capa 4 en adelante**
+
