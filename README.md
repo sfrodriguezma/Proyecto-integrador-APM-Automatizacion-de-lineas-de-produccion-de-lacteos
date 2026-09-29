@@ -732,6 +732,268 @@ Por tanto, cada operación identificada en los diagramas deberá poder relaciona
 | Tiempos                  | ⚪ Pendiente — Capa 8             |
 | Capacidades              | ⚪ Pendiente — Capa 9             |
  
+# Capa 4 — Proceso detallado
+
+Esta capa descompone el flujo general de la línea en **operaciones de proceso identificables**, estableciendo sus entradas, salidas y productos asociados.
+
+El modelo se construye a partir de referencias técnicas sobre fabricación de queso y de la clasificación pública de los productos de Alpina. Los parámetros específicos de operación de Alpina no se asumen como información pública; cuando no existe información verificable, el dato se marcará como `ASSUMED` o `PROPOSED`.
+
+La secuencia general de elaboración de queso incluye operaciones como preparación de la leche, tratamiento térmico, acidificación/cultivo, coagulación, corte de la cuajada, separación del suero y tratamiento posterior de la cuajada. La forma específica en que estas operaciones se combinan depende del tipo de queso.
+
+## Process Master
+
+| ID       | Operación                            | Entrada principal            | Salida principal              | Producto         | Origen/Estado |
+| -------- | ------------------------------------ | ---------------------------- | ----------------------------- | ---------------- | ------------- |
+| Q-OP-001 | Recepción de leche                   | Leche                        | Leche recibida                | Todos            | REFERENCE     |
+| Q-OP-002 | Control de recepción                 | Leche recibida               | Leche aprobada/rechazada      | Todos            | REFERENCE     |
+| Q-OP-003 | Almacenamiento de leche              | Leche aprobada               | Leche disponible              | Todos            | PROPOSED      |
+| Q-OP-004 | Preparación de la leche              | Leche                        | Leche preparada               | Todos            | REFERENCE     |
+| Q-OP-005 | Tratamiento térmico                  | Leche preparada              | Leche tratada                 | Todos            | REFERENCE     |
+| Q-OP-006 | Cultivo / inoculación                | Leche tratada                | Leche inoculada               | Todos            | REFERENCE     |
+| Q-OP-007 | Coagulación                          | Leche inoculada + coagulante | Cuajada                       | Todos            | REFERENCE     |
+| Q-OP-008 | Corte de cuajada                     | Cuajada                      | Cuajada cortada + suero       | Todos            | REFERENCE     |
+| Q-OP-009 | Agitación / tratamiento de cuajada   | Cuajada cortada              | Cuajada acondicionada + suero | Todos            | REFERENCE     |
+| Q-OP-010 | Desuerado                            | Cuajada + suero              | Cuajada + suero separado      | Todos            | REFERENCE     |
+| Q-OP-011 | Tratamiento específico de cuajada    | Cuajada                      | Cuajada procesada             | Según producto   | REFERENCE     |
+| Q-OP-012 | Salado                               | Cuajada / queso              | Producto salado               | Campesino / Sopó | REFERENCE     |
+| Q-OP-013 | Moldeado                             | Cuajada / queso              | Queso moldeado                | Según producto   | REFERENCE     |
+| Q-OP-014 | Prensado                             | Queso moldeado               | Queso prensado                | Campesino / Sopó | REFERENCE     |
+| Q-OP-015 | Estirado / hilado                    | Cuajada                      | Queso de pasta filata         | Mozzarella       | REFERENCE     |
+| Q-OP-016 | Maduración                           | Queso                        | Queso madurado                | Sopó             | REFERENCE     |
+| Q-OP-017 | Enfriamiento / acondicionamiento     | Queso procesado              | Queso acondicionado           | Todos            | PROPOSED      |
+| Q-OP-018 | Empaque                              | Queso acondicionado          | Producto empacado             | Todos            | PROPOSED      |
+| Q-OP-019 | Almacenamiento de producto terminado | Producto empacado            | Producto disponible           | Todos            | PROPOSED      |
+| Q-OP-020 | Despacho                             | Producto terminado           | Producto despachado           | Todos            | PROPOSED      |
+
+La secuencia de operaciones se basa en el proceso general de elaboración de queso descrito en literatura técnica; las operaciones específicas de Mozzarella y maduración se diferencian de acuerdo con las características de cada referencia.
+
+## Proceso común
+
+Las operaciones iniciales de la línea se pueden representar como:
+
+```mermaid
+flowchart TD
+    A[Recepción de leche]
+    B[Control de recepción]
+    C[Almacenamiento de leche]
+    D[Preparación de la leche]
+    E[Tratamiento térmico]
+    F[Cultivo / inoculación]
+    G[Coagulación]
+    H[Corte de cuajada]
+    I[Agitación / tratamiento]
+    J[Desuerado]
+    K[Tratamiento específico]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+    J --> K
+```
+
+La coagulación transforma la leche en una estructura de cuajada y, posteriormente, el corte facilita la separación del suero. El cultivo y las condiciones de procesamiento influyen sobre la humedad, textura, sabor y características finales del queso.
+
+## Ruta de proceso — Queso Campesino
+
+El Queso Campesino de Alpina está clasificado públicamente como un queso fresco.
+
+Para el modelo académico se establece la siguiente ruta:
+
+```mermaid
+flowchart TD
+    A[Recepción de leche]
+    B[Control de recepción]
+    C[Almacenamiento de leche]
+    D[Preparación de la leche]
+    E[Tratamiento térmico]
+    F[Cultivo / inoculación]
+    G[Coagulación]
+    H[Corte de cuajada]
+    I[Agitación / tratamiento]
+    J[Desuerado]
+    K[Tratamiento de cuajada]
+    L[Salado]
+    M[Moldeado]
+    N[Prensado]
+    O[Enfriamiento]
+    P[Empaque]
+    Q[Almacenamiento PT]
+    R[Despacho]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+    J --> K
+    K --> L
+    L --> M
+    M --> N
+    N --> O
+    O --> P
+    P --> Q
+    Q --> R
+```
+
+**Características de modelamiento:**
+
+* Producto fresco.
+* No se incorpora una etapa prolongada de maduración en el modelo.
+* El salado, moldeado y prensado se consideran operaciones diferenciadoras de la ruta.
+* Los tiempos, temperaturas, presiones y cantidades serán definidos posteriormente.
+
+## Ruta de proceso — Queso Mozzarella
+
+Alpina comercializa actualmente la Mozzarella en diferentes presentaciones y la clasifica como una categoría de queso fresco.
+
+La Mozzarella pertenece al grupo de quesos de tipo *pasta filata*, cuyo proceso incluye una etapa de calentamiento y estirado de la cuajada para desarrollar su estructura característica.
+
+Para el modelo académico:
+
+```mermaid
+flowchart TD
+    A[Recepción de leche]
+    B[Control de recepción]
+    C[Almacenamiento de leche]
+    D[Preparación de la leche]
+    E[Tratamiento térmico]
+    F[Cultivo / inoculación]
+    G[Coagulación]
+    H[Corte de cuajada]
+    I[Agitación / tratamiento]
+    J[Desuerado]
+    K[Preparación de cuajada para pasta filata]
+    L[Estirado / hilado]
+    M[Moldeado]
+    N[Enfriamiento]
+    O[Empaque]
+    P[Almacenamiento PT]
+    Q[Despacho]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+    J --> K
+    K --> L
+    L --> M
+    M --> N
+    N --> O
+    O --> P
+    P --> Q
+```
+
+**Características de modelamiento:**
+
+* La etapa de estirado/hilado es una operación diferenciadora.
+* Esta etapa implica tratamiento termo-mecánico de la cuajada.
+* La temperatura, humedad, pH, velocidad y condiciones de estirado serán variables relevantes para las capas posteriores.
+* No se incorpora una etapa prolongada de maduración en la ruta inicial.
+
+## Ruta de proceso — Queso Sopó
+
+Alpina identifica el Queso Sopó como un queso maduro y describe características que dependen de su punto de maduración.
+
+Para el modelo académico:
+
+```mermaid
+flowchart TD
+    A[Recepción de leche]
+    B[Control de recepción]
+    C[Almacenamiento de leche]
+    D[Preparación de la leche]
+    E[Tratamiento térmico]
+    F[Cultivo / inoculación]
+    G[Coagulación]
+    H[Corte de cuajada]
+    I[Agitación / tratamiento]
+    J[Desuerado]
+    K[Tratamiento de cuajada]
+    L[Moldeado]
+    M[Prensado]
+    N[Salado]
+    O[Maduración]
+    P[Enfriamiento / acondicionamiento]
+    Q[Empaque]
+    R[Almacenamiento PT]
+    S[Despacho]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+    J --> K
+    K --> L
+    L --> M
+    M --> N
+    N --> O
+    O --> P
+    P --> Q
+    Q --> R
+    R --> S
+```
+
+**Características de modelamiento:**
+
+* Incluye una etapa de maduración.
+* La maduración constituye una etapa diferenciadora respecto a los productos frescos.
+* Durante esta etapa serán relevantes variables como temperatura, humedad, tiempo y condiciones ambientales.
+* La duración y condiciones exactas de maduración serán definidas posteriormente y no se asumirán como datos internos de Alpina.
+
+## Operaciones y elementos que deberán definirse posteriormente
+
+Cada operación del `Process Master` servirá como referencia para las siguientes capas:
+
+| Capa         | Información derivada del proceso                         |
+| ------------ | -------------------------------------------------------- |
+| Equipos      | Equipo utilizado en cada operación                       |
+| Variables    | Variables físicas y químicas relevantes                  |
+| Sensores     | Instrumentación necesaria                                |
+| Actuadores   | Elementos utilizados para modificar/controlar el proceso |
+| Tiempos      | Duración y tiempo de ciclo                               |
+| Capacidades  | Capacidad de equipo, lote y producción                   |
+| Recursos     | Personal, materiales y servicios                         |
+| Recetas      | Parámetros específicos de cada referencia                |
+| Batches      | Ejecución concreta de una receta                         |
+| Trazabilidad | Registro de materiales, parámetros y resultados          |
+
+## Estado de la información
+
+| Tipo de información              | Estado                      |
+| -------------------------------- | --------------------------- |
+| Secuencia general de operaciones | 🟢 Definida                 |
+| Operaciones comunes              | 🟢 Definidas                |
+| Diferenciación Campesino         | 🟢 Definida preliminarmente |
+| Diferenciación Mozzarella        | 🟢 Definida                 |
+| Diferenciación Sopó              | 🟢 Definida                 |
+| Parámetros de proceso            | ⚪ Pendiente                 |
+| Equipos                          | ⚪ Capa 5                    |
+| Variables                        | ⚪ Capa 6                    |
+| Sensores y actuadores            | ⚪ Capa 7                    |
+| Tiempos                          | ⚪ Capa 8                    |
+| Capacidades                      | ⚪ Capa 9                    |
+
+> **Nota metodológica:** Las secuencias anteriores representan el modelo académico de la línea de quesos. Las fuentes técnicas permiten establecer operaciones características de la elaboración de queso, pero no permiten inferir automáticamente los procedimientos internos específicos de Alpina. Por ello, los parámetros industriales específicos deberán clasificarse como `PUBLIC`, `REFERENCE`, `ASSUMED`, `CALCULATED` o `PROPOSED` según corresponda.
 
  
 
