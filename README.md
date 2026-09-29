@@ -1,4 +1,4 @@
-# Proyecto-integrador-APM-Automatizacion-de-lineas-de-produccion-de-lacteos
+
 # Línea de Quesos — Modelo TDI
 
 ## 1. Información general
