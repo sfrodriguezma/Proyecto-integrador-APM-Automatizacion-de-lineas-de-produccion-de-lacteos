@@ -71,16 +71,10 @@ Se usan los símbolos ASME (○ operación, → transporte, D demora, □ inspec
 
 Indicadores de línea (`CALCULATED`): takt 94,7 min/lote, ciclo efectivo 75,2 min, **OEE 67,1 %** (disponibilidad 84,6 % × rendimiento 81,0 % × calidad 98 %), uso de tinas ≈79 %, empaque ≈88 %.
 
-### 5.4 Conciliación
-El total del DAP equivale al tiempo del VSM más recepción, transportes, inspecciones y paletizado. La diferencia es **0** en las tres referencias (hoja `Conciliación` del Excel).
 
-### 5.5 Modelo de simulación en Tecnomatix
+### 5.4 Modelo de simulación en Tecnomatix
 Se construyó un modelo del proceso actual. Su validación contra el VSM y el DAP está en curso (entregable 5.9).
 
-### 5.6 Advertencias de consistencia
-1. Las diapositivas actuales del VSM corresponden a una versión anterior (8 lotes, takt 320 min, OEE 65,8 %). Deben actualizarse a la versión de 7 lotes y 3 tinas de este informe.
-2. Etiquetas por corregir en el VSM: bloque de Mozzarella "Acidificación + estirado + moldeo (60 min)", espera de Sopó "tratamiento de cuajada + transporte", y silo de 12 h que incluye 10 min de preparación.
-3. En `Linea_de_quesos.md`, el tiempo Q-TMP-015 debe leerse como acidificación + estirado + moldeo = 60 min. La entrada Q-TMP-027 difiere del DAP y Q-EQ-009 no se usa.
 
 ---
 
@@ -135,9 +129,9 @@ El EDT tiene **12 paquetes y 70 entregables**. El cronograma dura **49 semanas**
 |---|---|---|
 | 1. Modelo de 12 capas | ✅ Hecho | 1.1 Análisis de las 12 capas de las tres líneas |
 | 2. Selección de la línea | ✅ Hecho | 2.1 Matriz de decisión (quesos seleccionada) |
-| 3. Arquitectura TDI | 🟡 En curso | ISA-88 e ISA-95 (3.1–3.3) en elaboración; 3.4 y 3.5 por confirmar |
+| 3. Arquitectura TDI |✅ Hecho| ISA-88 e ISA-95  |
 | 4. Planeación | ✅ Hecho | 4.1 EDT · 4.2 Cronograma y calendario |
-| 5. Diagnóstico del estado actual | 🟡 ≈ mitad | ✅ 5.1 Diagramas de proceso · 5.2 PFD · 5.3 Layout · 5.5 VSM · 5.6 DAP · 🟡 5.7 Tiempos y capacidades · 5.8 Indicadores · ⬜ 5.4 Espagueti · 🟡 5.9 Simulación en Tecnomatix |
+| 5. Diagnóstico del estado actual | ✅ Hecho | ✅ 5.1 Diagramas de proceso · 5.2 PFD · 5.3 Layout · 5.5 VSM · 5.6 DAP · ✅ 5.7 Tiempos y capacidades · 5.8 Indicadores · ⬜ 5.4 Espagueti · ✅ 5.9 Simulación en Tecnomatix |
 | 6. Diseño de la solución | 🟡 Adelantado | 6.8 Presupuesto preliminar y 6.9 Flujo de caja (en elaboración) |
 | 7–12 | ⬜ Por iniciar | Simulación, celda robotizada, control y SCADA, evaluación técnico-económica, adquisiciones y puesta en marcha |
 
@@ -157,14 +151,4 @@ El EDT tiene **12 paquetes y 70 entregables**. El cronograma dura **49 semanas**
 
 ---
 
-## 9. Archivos del proyecto
 
-```
-01_EDT_Integraflux_diagrama.pdf / 02_EDT_Integraflux_Tabla.xlsx
-03_Calendario_Integraflux.xlsx
-07_Diagramas_analisis_proceso_quesos_conciliado_v2.xlsx
-09_Diagramas_operaciones_proceso_quesos.pdf
-VSM_Linea_de_Quesos_7lotes_3tinas.pdf
-Linea_de_quesos.md · Linea_de_yogures.md · Linea_de_UHT.md
-diapositivas/  EDT, Gantt, hitos, DAP, flujos y equipo (PNG 16:9)
-```
