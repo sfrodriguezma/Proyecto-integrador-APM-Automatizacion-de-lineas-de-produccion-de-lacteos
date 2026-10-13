@@ -86,15 +86,8 @@ Estado de las capas: quesos y UHT con las 12 capas definidas. Yogures igual, con
 
 Las tres líneas usan los mismos recursos de planta, que pueden limitar la producción global: silos de leche cruda (`PL-EQ-001`), CIP (`PL-EQ-002`), vapor o agua caliente (`PL-EQ-003`), agua helada (`PL-EQ-004`), aire comprimido (`PL-EQ-005`), laboratorio, mantenimiento y cámaras de frío. La matriz de recursos compartidos consolidada de las tres líneas sigue pendiente.
 
-## 7. Pendientes y advertencias
 
-- **Versión del documento de quesos:** el archivo del proyecto en Claude (`Linea de quesos.md`) está en una versión anterior, con las capas 8 a 12 en `PENDING`. Esta caracterización usa la versión actualizada, con tiempos, capacidades y recetas. Conviene reemplazar el archivo del proyecto.
-- **Uso de tinas:** la capa 9 de quesos indica 87 % y el VSM más reciente indica ≈79 %. Hay que unificar la cifra.
-- **Supuestos:** el tamaño de lote, el número de tanques, el OEE base de 65 % y las velocidades de llenadoras son `ASSUMED` y deben validarse en la visita industrial.
-- **Consumos de servicios** (vapor, agua helada, aire, energía): pendientes para el presupuesto.
-- **Matriz de recursos compartidos** de las tres líneas: por consolidar.
-- **Normativa:** verificar si la Res. 1407 de 2022 modificó artículos fisicoquímicos de la Res. 2310 de 1986.
 
-## 8. Archivos fuente
+## 7. Archivos fuente
 
 `Linea_de_quesos.md` · `Linea_de_yogures.md` · `Linea_de_UHT.md` (cada uno con sus 12 capas, tablas de IDs y fuentes).
